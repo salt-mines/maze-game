@@ -21,7 +21,7 @@ public class LightScript : MonoBehaviour
             lightSource.intensity -= depleteAmount * Time.deltaTime;
     }
 
-    void powerPickup()
+    public void powerPickup()
     {
         lightSource.intensity = 1;
     }

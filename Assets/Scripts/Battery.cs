@@ -5,12 +5,12 @@ using UnityEngine;
 public class Battery : MonoBehaviour
 {
 
-    public GameObject player;
+    private GameObject player;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = GameObject.FindWithTag("Player");
     }
 
     // Update is called once per frame
@@ -23,7 +23,7 @@ public class Battery : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.transform.parent.tag == "Player")
         {
             player.GetComponentInChildren<LightScript>().powerPickup();
             Destroy(transform.parent.gameObject);

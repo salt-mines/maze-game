@@ -16,22 +16,18 @@ public class Battery : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.parent.Rotate(new Vector3(0, 5, 0));
-        
+        transform.parent.Rotate(new Vector3(0, 5, 0));      
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        
+        Debug.Log(other.gameObject.transform.parent.tag);
         if (other.gameObject.transform.parent.tag == "Player")
         {
             player.GetComponentInChildren<LightScript>().powerPickup();
             Destroy(transform.parent.gameObject);
         }
     }
-
-
-
 }
 
 

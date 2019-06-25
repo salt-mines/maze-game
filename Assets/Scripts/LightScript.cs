@@ -1,12 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class LightScript : MonoBehaviour
 {
     private Light lightSource;
 
-    public float depleteAmount = 0.01f;
+    public float rangeDeplete = 0.25f;
     public float maxRange = 5f;
     public float minRange = 2.5f;
 
@@ -14,7 +12,6 @@ public class LightScript : MonoBehaviour
     void Start()
     {
         lightSource = GetComponent<Light>();
-        lightSource.intensity = 1;
         lightSource.range = maxRange;
     }
 
@@ -23,15 +20,13 @@ public class LightScript : MonoBehaviour
     {
         if(lightSource.range > minRange)
         {
-            lightSource.intensity -= depleteAmount * Time.deltaTime;
-            lightSource.range -= depleteAmount * Time.deltaTime;
+            lightSource.range -= rangeDeplete * Time.deltaTime;
         }
         
     }
 
     public void powerPickup()
     {
-        lightSource.intensity = 1;
         lightSource.range = maxRange;
     }
 }

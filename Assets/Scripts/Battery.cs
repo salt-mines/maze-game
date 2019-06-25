@@ -19,7 +19,6 @@ public class Battery : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject.transform.parent.tag);
         if (other.gameObject.transform.parent.tag == "Player")
         {
             player.GetComponentInChildren<LightScript>().powerPickup();

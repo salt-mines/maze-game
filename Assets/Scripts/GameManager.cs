@@ -36,7 +36,8 @@ public class GameManager : MonoBehaviour
             //Utils.Error("GameManager: Level List must have at least one level");
             return;
         }
-        Reset();
+        //Reset();
+        OnPauseMenu();
     }
 
     // Update is called once per frame

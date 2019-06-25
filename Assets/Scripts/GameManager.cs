@@ -36,7 +36,6 @@ public class GameManager : MonoBehaviour
             //Utils.Error("GameManager: Level List must have at least one level");
             return;
         }
-        SceneManager.LoadScene(levelList[currentLevel], LoadSceneMode.Additive);
         Reset();
     }
 
@@ -65,7 +64,8 @@ public class GameManager : MonoBehaviour
     public void Restart()
     {
         Pause();
-        StartCoroutine(LoadLevelAsync(0));
+        SceneManager.LoadScene("Level1",LoadSceneMode.Single);
+        //StartCoroutine(LoadLevelAsync(0));
     }
 
     public void NextLevel()

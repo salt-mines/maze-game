@@ -6,19 +6,29 @@ using UnityEngine.AI;
 public class EnemyMovement : MonoBehaviour
 {
     private GameObject player;
+    public GameObject resetPoint;
     private NavMeshAgent navMesh;
+
+    public float resetRange = 0.8f;
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         navMesh = GetComponent<NavMeshAgent>();
-        //navMesh.updateRotation = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        navMesh.destination = player.transform.position;
+        if(player.GetComponentInChildren<Light>().range/player.GetComponentInChildren<LightScript>().maxRange > resetRange)
+        {
+            navMesh.destination = resetPoint.transform.position;
+        }
+        else
+        {
+            navMesh.destination = player.transform.position;
+        }
+        
     }
 
     private void LateUpdate()

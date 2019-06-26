@@ -2214,6 +2214,8 @@ MonoBehaviour:
     type: 3}
   gameOverMenuPrefab: {fileID: 6887737474983387591, guid: c3a4028afbe5cc5469019a792f51a8c9,
     type: 3}
+  startMenuPrefab: {fileID: 3326392299879378982, guid: f29e6b30cff72d94d89f9f118b27a6cf,
+    type: 3}
 --- !u!4 &784034927
 Transform:
   m_ObjectHideFlags: 0

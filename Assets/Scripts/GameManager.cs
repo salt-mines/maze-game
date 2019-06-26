@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     public MenuScript pauseMenuPrefab;
     public MenuScript nextLevelMenuPrefab;
     public GameOverMenu gameOverMenuPrefab;
+    public MenuScript startMenuPrefab;
 
     private bool paused;
 
@@ -37,7 +38,8 @@ public class GameManager : MonoBehaviour
             return;
         }
         //Reset();
-        OnPauseMenu();
+        //OnPauseMenu();
+        OnStartMenu();
     }
 
     // Update is called once per frame
@@ -91,6 +93,12 @@ public class GameManager : MonoBehaviour
     public void PlayerTakeDamage()
     {
         OnDeath();
+    }
+
+    public void OnStartMenu()
+    {
+        var menu = Instantiate(startMenuPrefab, canvas.transform);
+        eventSystem.SetSelectedGameObject(menu.GetComponentInChildren<Button>().gameObject);
     }
 
     public void OnPauseMenu()

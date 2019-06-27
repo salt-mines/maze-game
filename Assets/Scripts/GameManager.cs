@@ -13,10 +13,8 @@ public class GameManager : MonoBehaviour
 
 
     // Level system
-    public string[] levelList;
     public bool gameCanEnd = true;
-    private int currentLevel = 0;
-    public int levelCount = 0;
+
 
     // UI
     public Canvas canvas;
@@ -29,28 +27,12 @@ public class GameManager : MonoBehaviour
 
     private bool paused;
 
+    public string nextLevel;
+
     // Start is called before the first frame update
     void Start()
     {
-        if (levelList.Length == 0)
-        {
-            //Utils.Error("GameManager: Level List must have at least one level");
-            return;
-        }
-        //Reset();
-        //OnPauseMenu();
         OnStartMenu();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    private void Reset()
-    {
-        Resume();
     }
 
     public void Resume()
@@ -68,26 +50,12 @@ public class GameManager : MonoBehaviour
     {
         Pause();
         SceneManager.LoadScene("Level1",LoadSceneMode.Single);
-        //StartCoroutine(LoadLevelAsync(0));
     }
 
     public void NextLevel()
     {
         Pause();
-        StartCoroutine(LoadLevelAsync((currentLevel + 1) % levelList.Length));
-    }
-
-    private IEnumerator LoadLevelAsync(int nextLevel)
-    {
-        var asUnload = SceneManager.UnloadSceneAsync(levelList[currentLevel]);
-        currentLevel = nextLevel;
-        var asLoad = SceneManager.LoadSceneAsync(levelList[currentLevel], LoadSceneMode.Additive);
-
-        while (!asUnload.isDone || !asLoad.isDone)
-        {
-            yield return null;
-        }
-        Reset();
+        SceneManager.LoadScene(nextLevel, LoadSceneMode.Single);
     }
 
     public void PlayerTakeDamage()
@@ -114,7 +82,7 @@ public class GameManager : MonoBehaviour
 
     public void OnNextLevelMenu()
     {
-        if (currentLevel == levelList.Length - 1)
+        if (nextLevel == null || nextLevel == "")
         {
             // Last level, win!
             OnWin();

@@ -11,6 +11,9 @@ public class EnemyMovement : MonoBehaviour
     public GameObject resetPoint;
     private NavMeshAgent navMesh;
 
+    private Animator animator;
+
+    public Material ghostEmission;
     public float resetRange = 0.8f;
     // Start is called before the first frame update
     void Start()
@@ -18,28 +21,36 @@ public class EnemyMovement : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         navMesh = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
+        navMesh.updatePosition = false;
     }
+    
+    private Vector2 smoothDeltaPosition = Vector2.zero;
+    private Vector2 velocity = Vector2.zero;
 
     // Update is called once per frame
     void Update()
     {
-        if(player)
-            if(player.GetComponentInChildren<Light>().range/player.GetComponentInChildren<LightScript>().maxRange > resetRange)
+        if (player)
+            if (player.GetComponentInChildren<Light>().range / player.GetComponentInChildren<LightScript>().maxRange > resetRange)
             {
                 navMesh.destination = resetPoint.transform.position;
+                ghostEmission.SetColor("_EmissionColor", Color.red);
             }
             else
             {
                 navMesh.destination = player.transform.position;
+                ghostEmission.SetColor("_EmissionColor", Color.white);
             }
-        
+
+        var localVel = transform.InverseTransformDirection(navMesh.velocity);
+        animator.SetFloat("speed", localVel.magnitude);
+        animator.SetFloat("turning", localVel.x);
     }
 
-    private void LateUpdate()
+    private void OnAnimatorMove()
     {
-        Vector3 oldRotation = transform.rotation.eulerAngles;
-        oldRotation.x = -90;
-        transform.rotation = Quaternion.Euler(oldRotation);
+        transform.position = navMesh.nextPosition;
     }
 
     private void OnTriggerEnter(Collider other)

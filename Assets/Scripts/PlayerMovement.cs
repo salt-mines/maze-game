@@ -10,10 +10,12 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector3 targetRotation;
 
+    private Animator animator;
     // Start is called before the first frame update
     void Start()
     {
         input = GetComponent<PlayerInput>();
+        animator = GetComponentInChildren<Animator>();
         targetRotation = transform.position + transform.forward;
     }
 
@@ -25,9 +27,16 @@ public class PlayerMovement : MonoBehaviour
             targetRotation.x = transform.position.x + input.Horizontal * 100;
             targetRotation.z = transform.position.z + input.Vertical * 100;
             targetRotation.y = transform.position.y;
+
+            if(animator)
+                animator.SetFloat("Speed", 1);
+        }
+        else
+        {
+            animator.SetFloat("Speed", 0);
         }
 
         transform.position += new Vector3(input.Horizontal, 0, input.Vertical) * Time.deltaTime * playerSpeed;
-        transform.LookAt(targetRotation);
+        transform.LookAt(targetRotation);      
     }
 }

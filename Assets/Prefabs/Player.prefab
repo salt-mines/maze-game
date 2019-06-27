@@ -532,11 +532,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: box_character_model_and_bones
       objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: 3a4e7486157c71244afe7dfb8ad82b84,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 67d31115559a7de4397faae55a30babc, type: 2}
     - target: {fileID: -4216859302048453862, guid: 3a4e7486157c71244afe7dfb8ad82b84,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -592,6 +587,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: 3a4e7486157c71244afe7dfb8ad82b84,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 67d31115559a7de4397faae55a30babc, type: 2}
     - target: {fileID: 1651062367082650294, guid: 3a4e7486157c71244afe7dfb8ad82b84,
         type: 3}
       propertyPath: m_LightProbeUsage

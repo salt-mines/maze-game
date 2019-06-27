@@ -638,6 +638,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 29845383}
+    - target: {fileID: 4012978464141971791, guid: 238b8d17507d8d345a5797e1289111c1,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 238b8d17507d8d345a5797e1289111c1, type: 3}
 --- !u!4 &149112667 stripped
@@ -2241,9 +2246,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 39319f71aedcced4f9fcbc2893662ad7, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.46
+  m_Volume: 0.2
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -7337,6 +7342,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 134.8262
       objectReference: {fileID: 0}
+    - target: {fileID: 5064995983186252858, guid: c0f7b8f27a6ce734788b33156c55aa58,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -46.80372
+      objectReference: {fileID: 0}
+    - target: {fileID: 5064995983186252858, guid: c0f7b8f27a6ce734788b33156c55aa58,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 65.20806
+      objectReference: {fileID: 0}
+    - target: {fileID: 5064995983186252858, guid: c0f7b8f27a6ce734788b33156c55aa58,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -78.97572
+      objectReference: {fileID: 0}
     - target: {fileID: 8481690583871778059, guid: c0f7b8f27a6ce734788b33156c55aa58,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -7366,21 +7386,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -14.658831
-      objectReference: {fileID: 0}
-    - target: {fileID: 5064995983186252858, guid: c0f7b8f27a6ce734788b33156c55aa58,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -46.80372
-      objectReference: {fileID: 0}
-    - target: {fileID: 5064995983186252858, guid: c0f7b8f27a6ce734788b33156c55aa58,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 65.20806
-      objectReference: {fileID: 0}
-    - target: {fileID: 5064995983186252858, guid: c0f7b8f27a6ce734788b33156c55aa58,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -78.97572
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0f7b8f27a6ce734788b33156c55aa58, type: 3}

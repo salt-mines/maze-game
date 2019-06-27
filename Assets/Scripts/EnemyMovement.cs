@@ -62,7 +62,7 @@ public class EnemyMovement : MonoBehaviour
     {
         if (animator)
         {
-            animator.SetFloat("speed", velocity.y / navMesh.speed);
+            animator.SetFloat("speed", velocity.magnitude / navMesh.speed);
             animator.SetFloat("turning", velocity.x);
         }
     }

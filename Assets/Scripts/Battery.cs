@@ -22,6 +22,7 @@ public class Battery : MonoBehaviour
         if (other.gameObject.transform.parent.tag == "Player")
         {
             player.GetComponentInChildren<LightScript>().powerPickup();
+            player.GetComponent<PlayerMovement>().BatteryPickUp();
             Destroy(transform.parent.gameObject);
         }
     }

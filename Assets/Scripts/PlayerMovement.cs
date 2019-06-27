@@ -5,8 +5,11 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float playerSpeed = 7f;
+    public AudioClip pickupSound;
+    public AudioClip deathSound;
 
     private PlayerInput input;
+    private AudioSource audioSource;
 
     private Vector3 targetRotation;
 
@@ -17,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
         input = GetComponent<PlayerInput>();
         animator = GetComponentInChildren<Animator>();
         targetRotation = transform.position + transform.forward;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -39,4 +43,17 @@ public class PlayerMovement : MonoBehaviour
         transform.position += new Vector3(input.Horizontal, 0, input.Vertical) * Time.deltaTime * playerSpeed;
         transform.LookAt(targetRotation);      
     }
+
+    public void BatteryPickUp()
+    {
+        audioSource.PlayOneShot(pickupSound,0.2f);
+    }
+
+    public void Death()
+    {
+        audioSource.PlayOneShot(deathSound);
+    }
+
+    
+
 }

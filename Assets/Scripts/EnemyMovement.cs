@@ -8,6 +8,8 @@ public class EnemyMovement : MonoBehaviour
     private GameManager gameManager;
 
     private GameObject player;
+
+    private bool shouldGroan;
     public GameObject resetPoint;
     private NavMeshAgent navMesh;
 
@@ -34,13 +36,18 @@ public class EnemyMovement : MonoBehaviour
         if (player)
             if (player.GetComponentInChildren<Light>().range / player.GetComponentInChildren<LightScript>().maxRange > resetRange)
             {
+                shouldGroan = true;
                 navMesh.destination = resetPoint.transform.position;
-                ghostEmission.SetColor("_EmissionColor", Color.red);
+                ghostEmission.SetColor("_EmissionColor", Color.white);
             }
             else
             {
+                if(shouldGroan){
+                    GetComponent<AudioSource>().Play();
+                    shouldGroan = false;
+                }
                 navMesh.destination = player.transform.position;
-                ghostEmission.SetColor("_EmissionColor", Color.white);
+                ghostEmission.SetColor("_EmissionColor", Color.red);
             }
 
         var localVel = transform.InverseTransformDirection(navMesh.velocity);
@@ -57,8 +64,8 @@ public class EnemyMovement : MonoBehaviour
     {
         if (other.gameObject.transform.parent.tag == "Player")
         {
-            Destroy(other.gameObject.transform.parent.gameObject);
             gameManager.PlayerTakeDamage();
+            other.GetComponentInParent<PlayerMovement>().Death();
         }
     }
 }

@@ -13,6 +13,7 @@ public class EnemyMovement : MonoBehaviour
 
     private Animator animator;
 
+    public Material ghostEmission;
     public float resetRange = 0.8f;
     // Start is called before the first frame update
     void Start()
@@ -34,10 +35,12 @@ public class EnemyMovement : MonoBehaviour
             if (player.GetComponentInChildren<Light>().range / player.GetComponentInChildren<LightScript>().maxRange > resetRange)
             {
                 navMesh.destination = resetPoint.transform.position;
+                ghostEmission.SetColor("_EmissionColor", Color.red);
             }
             else
             {
                 navMesh.destination = player.transform.position;
+                ghostEmission.SetColor("_EmissionColor", Color.white);
             }
 
         var localVel = transform.InverseTransformDirection(navMesh.velocity);
@@ -48,13 +51,6 @@ public class EnemyMovement : MonoBehaviour
     private void OnAnimatorMove()
     {
         transform.position = navMesh.nextPosition;
-    }
-
-    private void LateUpdate()
-    {
-        if (animator)
-        {
-        }
     }
 
     private void OnTriggerEnter(Collider other)

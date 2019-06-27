@@ -123,7 +123,7 @@ Transform:
   m_GameObject: {fileID: 2511547587528277652}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -18.66, y: 0, z: -8.76}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 2895704917889664777}
   - {fileID: 2802580959137760941}
@@ -220,6 +220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resetPoint: {fileID: 0}
+  ghostEmission: {fileID: 2100000, guid: 67b9a2fe060efcf41830cd07ce6ae6aa, type: 2}
   resetRange: 0.8
 --- !u!195 &5907352923361666215
 NavMeshAgent:
@@ -230,7 +231,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 2511547587528277652}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.35
+  m_Radius: 0.45
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
